@@ -26,7 +26,7 @@ class HistoriaItem extends React.Component {
             
             const { agregarItem } = this.props
             const historiaActual = this.getHistoriaActual()
-            agregarItem(historiaActual)
+            agregarItem({id : historiaActual.id, letra : e.target.textContent.trim()})
         }
         
         )
@@ -49,17 +49,23 @@ class HistoriaItem extends React.Component {
     render() {
         console.log("render");
 
+        const { finDeLasOpciones } = this.props
+
         
         const historiaActual = this.getHistoriaActual()
+
+        const enabled = this.state.numeroHistoria < finDeLasOpciones
 
         return (
             <>
                 <p>{historiaActual.historia} </p>
 
-                <Button handleClick={this.handleClick} opcion="a" />
+                <Button handleClick={this.handleClick} opcion="a" enabled={enabled} />
                 <p>{historiaActual.opciones.a}</p>
-                <Button handleClick={this.handleClick} opcion="b" />
+                <Button handleClick={this.handleClick} opcion="b"  enabled={enabled} />
                 <p>{historiaActual.opciones.b}</p>
+
+                
 
             </>
         )
