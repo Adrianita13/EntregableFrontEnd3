@@ -3,7 +3,7 @@ import Aventura from "./components/Aventura";
 
 function App() {
   return (
-    <div className="App">
+    <div className="layout">
     <Aventura/>
     </div>
   );

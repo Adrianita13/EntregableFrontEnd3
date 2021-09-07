@@ -2,11 +2,11 @@ import React from 'react';
 import HistoriaItem from "./HistoriaItem";
 import data from "./data.json";
 
-class Aventura extends React.Component{
-    constructor(props){
+class Aventura extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
-            historiaCompleta: []
+        this.state = {
+            historialOpciones: []
         }
         this.agregarItem = this.agregarItem.bind(this)
     }
@@ -14,32 +14,33 @@ class Aventura extends React.Component{
     agregarItem(item) {
         this.setState(prevState => {
             return {
-                historiaCompleta: [...prevState.historiaCompleta, item]
+                historialOpciones: [...prevState.historialOpciones, item]
             }
         })
     }
 
-    render(){
+    render() {
 
-        const historiaCompletaLength =  this.state.historiaCompleta.length
 
-        const anteultimo = historiaCompletaLength > 0 ? this.state.historiaCompleta[historiaCompletaLength - 1].letra : "-"
 
-        //TODO ; sacar el 5 harcoded y calcularlo aca dinamicamente
-       return(
-       <div>
-            <h1> Elige tu propia aventura </h1>
-            <HistoriaItem data={data} agregarItem={this.agregarItem} finDeLasOpciones={5} />
-            <p> Selección anterior: {anteultimo}</p>
-            <p> Historial de elecciones elegidas : {} </p>
+        const ultimaOpcion = this.state.historialOpciones.length > 0 ? this.state.historialOpciones[this.state.historialOpciones.length - 1].letra : "-"
 
-            <ul>
-                {this.state.historiaCompleta.map(function(item) {
-                    return (<li key={item.id}>{item.letra}</li>)
-                }
-                 )}
-            </ul>
-        </div>
+
+        return (
+            <div>
+                <h1> Elige tu propia aventura </h1>
+                <HistoriaItem data={data} agregarItem={this.agregarItem} />
+                <div className="recordatorio">
+                    <h3> Selección anterior: {ultimaOpcion}</h3>
+                    <h3> Historial de opciones elegidas : {
+                        <ul>
+                            {this.state.historialOpciones.map(function (item) {
+                                return (<li key={item.id}>{item.letra}</li>)
+                            }
+                            )}
+                        </ul>} </h3>
+                </div>
+            </div>
         )
     }
 

@@ -4,10 +4,10 @@ class Button extends React.Component {
 
 
     render() {
-        const {handleClick,opcion, enabled}= this.props;
+        const {handleClick,opcion, deshabilitarBoton}= this.props;
 
         return (
-            <button onClick={handleClick}  disabled={!enabled} > {opcion} </button>
+            <button className="botones" onClick={handleClick}  disabled={!deshabilitarBoton} >{opcion}</button>
         )
     }
 }
