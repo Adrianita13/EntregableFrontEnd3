@@ -64,5 +64,5 @@
 }
 
 .botones:disabled {
-  background-color: grey;
+  background: grey;
 }

@@ -1,16 +1,21 @@
 import React from 'react';
 import Button from "./Button";
 
-
 class HistoriaItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            numeroHistoria: 1,
+            numeroHistoria: 0,
             letraHistoria: "",
 
         }
         this.handleClick = this.handleClick.bind(this)
+    }
+
+    componentWillMount(){
+        this.setState({
+                numeroHistoria:1
+            })
     }
 
     handleClick(e) {

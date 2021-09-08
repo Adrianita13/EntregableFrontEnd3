@@ -20,11 +20,7 @@ class Aventura extends React.Component {
     }
 
     render() {
-
-
-
         const ultimaOpcion = this.state.historialOpciones.length > 0 ? this.state.historialOpciones[this.state.historialOpciones.length - 1].letra : "-"
-
 
         return (
             <div>
